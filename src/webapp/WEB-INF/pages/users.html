@@ -18,8 +18,24 @@
                     <td th:text="${obj.getLastName()}"></td>
                     <td th:text="${obj.getAge()}"></td>
                     <td th:text="${obj.getEmail()}"></td>
-                    <td><a th:href="@{user-update/{id}(id=${obj.getId})}">Edit</a></td>
-                    <td><a th:href="@{user-delete/{id}(id=${obj.getId})}">Delete</a></td>
+<!--                    <td><a th:href="@{user-update/{id}(id=${obj.getId()})}">Edit</a></td>-->
+                    <td>
+                        <form id="formUpdateUser"
+                              th:attrappend="id=${obj.getId()}"
+                              th:method="GET"
+                              th:action="@{/user-update/{id}(id=${obj.getId()})}">
+                            <input type="submit" value="EDIT">
+                        </form>
+                    </td>
+                    <td>
+                        <form id="formDeleteUser"
+                              th:attrappend="id=${obj.getId()}"
+                              th:method="DELETE"
+                              th:action="@{/user-delete/{id}(id=${obj.getId()})}">
+                            <input type="submit" value="DELETE">
+                        </form>
+                    </td>
+
                 </tr>
                 </tbody>
             </th:block>

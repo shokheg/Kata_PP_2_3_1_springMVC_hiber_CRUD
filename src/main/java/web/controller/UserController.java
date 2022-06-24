@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
 
@@ -43,7 +41,7 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @GetMapping(value = "user-delete/{id}")
+    @DeleteMapping (value = "user-delete/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         userService.delete(userService.getUser(id));
         return "redirect:/users";
@@ -56,7 +54,7 @@ public class UserController {
         return "/user-update";
     }
 
-    @PostMapping("/user-update")
+    @PatchMapping("/user-update")
     public String updateUser(User user) {
         userService.updateUser(user);
         return "redirect:/users";
